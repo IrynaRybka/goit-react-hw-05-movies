@@ -2,30 +2,32 @@
 // import {ThreeCircles } from  'react-loader-spinner'
 
 import { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, Link } from 'react-router-dom';
 import { fetchGetMovieDetails } from '../api/fetchApi';
 import { toast } from 'react-toastify';
+// import {  Outlet} from 'react-router-dom';
+
 
 // import {MovieDetailsCard} from '../pages/MovieDetailsPage';
 
 export const MovieDetailsCard = () => {
   const { movieId } = useParams();
   const [movie, setMovie] = useState(null);
-  console.log(movie);
+  //   console.log(movie);
 
   useEffect(() => {
-    const fetchDetails = async() => {
+    const fetchDetails = async () => {
       try {
         const data = await fetchGetMovieDetails(movieId);
         setMovie(data);
       } catch {
         toast.warn('Sorry, we don`t have overview yet.');
       }
-    }
+    };
     fetchDetails();
   }, [movieId]);
 
-//   const { title, poster_path, tagline, vote_average, overview, genres } = movie;
+  //   const { title, poster_path, tagline, vote_average, overview, genres } = movie;
 
   return (
     <div className="movieDetails">
@@ -45,6 +47,14 @@ export const MovieDetailsCard = () => {
             <h2>Genres</h2>
             <p>{movie.genres.map(genre => genre.name).join(', ')}</p>
           </div>
+          <ul>
+          <li>
+          <Link to="cast">Cast</Link>
+        </li>
+        <li>
+          <Link to="reviews">Reviews</Link>
+        </li>
+          </ul>
         </div>
       )}
     </div>
