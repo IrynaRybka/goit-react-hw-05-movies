@@ -5,52 +5,58 @@ import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { fetchGetMovieDetails } from '../api/fetchApi';
 import { toast } from 'react-toastify';
+
 // import {MovieDetailsCard} from '../pages/MovieDetailsPage';
 
-
 export const MovieDetailsCard = () => {
-    const { movieId } = useParams();
-    const [movie, setMovie] = useState(null);
-    
-    useEffect(() => {
-      async function fetchDetails() {
-        try {
-          const result  = await fetchGetMovieDetails(movieId);
-          setMovie(result);
-        } catch {
-          toast.warn('Sorry, we don`t have overview yet.');
-        }
+  const { movieId } = useParams();
+  const [movie, setMovie] = useState(null);
+  console.log(movie);
+
+  useEffect(() => {
+    const fetchDetails = async() => {
+      try {
+        const data = await fetchGetMovieDetails(movieId);
+        setMovie(data);
+      } catch {
+        toast.warn('Sorry, we don`t have overview yet.');
       }
-      fetchDetails();
-    }, [movieId]);
-    console.log(movie)
-  
-    return ( 
-      <div className="movieDetails">
-          <h1>
-             {movie.title}
-           </h1>
-        <img src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`} width="280" alt={movie.title} />
-        <p>{movie.tagline}</p>
-        <p>Average: {movie.vote_average}</p>
-         <div>
-           <h2>Overview</h2>
-           <p>{movie.overview}</p>
-           <h2>Genres</h2>
-          <p>
-             {movie.genres.map(genre => genre.name).join(', ')}
-           </p>
-         </div>
-      </div>
-    );
-  };
+    }
+    fetchDetails();
+  }, [movieId]);
+
+//   const { title, poster_path, tagline, vote_average, overview, genres } = movie;
+
+  return (
+    <div className="movieDetails">
+      {movie && (
+        <div>
+          <h1>{movie.title}</h1>
+          <img
+            src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
+            width="280"
+            alt={movie.title}
+          />
+          <p>{movie.tagline}</p>
+          <p>Average: {movie.vote_average}</p>
+          <div>
+            <h2>Overview</h2>
+            <p>{movie.overview}</p>
+            <h2>Genres</h2>
+            <p>{movie.genres.map(genre => genre.name).join(', ')}</p>
+          </div>
+        </div>
+      )}
+    </div>
+  );
+};
 
 //     console.log(movie)
 //     const { overview, title, genres, vote_average } = movie;
-  
+
 //     let posterPath;
 //     if (movie.poster_path) {
-        
+
 //       posterPath = `https://image.tmdb.org/t/p/w400/${movie.poster_path}`;
 //     } else {
 //       posterPath =`${noPosterFilm}`;
@@ -75,5 +81,3 @@ export const MovieDetailsCard = () => {
 //       </div>
 //     );
 //   };
-
-  
