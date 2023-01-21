@@ -5,7 +5,6 @@ const address = 'https://api.themoviedb.org/3';
 
 export const fetchTrendingToday = async () => {
   const {data} = await axios.get(`${address}/trending/movie/day?api_key=${API_KEY}&language=en-US`);
-  console.log(data)
   return data;
 }
 
@@ -15,7 +14,7 @@ export const fetchSearchMovie = async (query) => {
 }
 
 export const fetchGetMovieDetails = async(id) => {
-    const {data} = await axios.get(`${address}/movies/${id}?api_key=${API_KEY}&language=en-US`);
+    const {data} = await axios.get(`${address}/movie/${id}?api_key=${API_KEY}&language=en-US`);
     return data;
 }
 

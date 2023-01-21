@@ -1,5 +1,6 @@
 // import { useState, useEffect } from 'react';
 import { Outlet } from 'react-router-dom';
+// import {ThreeCircles } from  'react-loader-spinner'
 // import { fetchSearchMovie } from '../api/fetchApi';
 
 export const Movies = () => {
