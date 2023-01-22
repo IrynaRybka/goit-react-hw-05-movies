@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { fetchMovieCredits } from '../api/fetchApi';
 import { toast } from 'react-toastify';
+import noPosterActor from '../noImg/noPosterActor.jpg'
 
 export const Cast = () => {
   const { movieId } = useParams();
@@ -20,16 +21,20 @@ export const Cast = () => {
     fetchCast();
   },[]);
 
- 
-
-
   return (
     <div>
       <h2>Actors</h2>
       <ul>
-        {actors && actors.map(actor => {return ( <li key={actor.id}>
+        {actors && actors.map(actor => { 
+            let profilePath = '';
+            if(actor.profile_path) {
+                profilePath = `https://image.tmdb.org/t/p/w500${actor.profile_path}`
+            } else {
+                profilePath = noPosterActor;
+            }
+            return ( <li key={actor.id}>
                <img 
-                 src={`https://image.tmdb.org/t/p/w500${actor.profile_path}`}
+                 src={profilePath}
                    width="150"
                    alt={actor.name}
                  />
