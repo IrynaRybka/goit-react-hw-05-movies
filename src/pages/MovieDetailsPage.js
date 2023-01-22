@@ -13,7 +13,7 @@ import { toast } from 'react-toastify';
 export const MovieDetailsCard = () => {
   const { movieId } = useParams();
   const [movie, setMovie] = useState(null);
-  //   console.log(movie);
+    console.log(movie);
 
   useEffect(() => {
     const fetchDetails = async () => {
@@ -28,7 +28,6 @@ export const MovieDetailsCard = () => {
   }, [movieId]);
 
   //   const { title, poster_path, tagline, vote_average, overview, genres } = movie;
-
   return (
     <div className="movieDetails">
       {movie && (
