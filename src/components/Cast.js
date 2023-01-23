@@ -21,6 +21,10 @@ export const Cast = () => {
     fetchCast();
   },[]);
 
+  if(actors.length < 1) {
+    return <p>This is cartoon. There aren`t actors.</p>
+  }
+
   return (
     <div>
       <h2>Actors</h2>

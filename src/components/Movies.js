@@ -15,6 +15,9 @@ export const Movies = () => {
   const queryName = searchParams.get('name') ?? '';
 
   useEffect(() => {
+    if(!queryName) {
+      return
+    }
     async function fetchSearch() {
       try {
         const { results } = await fetchSearchMovie(queryName);

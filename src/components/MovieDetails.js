@@ -6,7 +6,7 @@ export const MovieDetails = () => {
 
   return (
     <div className="movieDetails">
-      <Link to={location.state?.from ?? ('/movies' && '/')}>
+      <Link to={location.state?.from ?? ('/movies' ?? '/')}>
         Go Back
       </Link>
       <MovieDetailsCard />
