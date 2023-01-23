@@ -1,15 +1,15 @@
-// import { useEffect, useState } from 'react';
-import {  Outlet} from 'react-router-dom';
-// import { fetchGetMovieDetails } from '../api/fetchApi';
-// import { toast } from 'react-toastify';
-import {MovieDetailsCard} from '../pages/MovieDetailsPage';
+import { Link, Outlet, useLocation } from 'react-router-dom';
+import { MovieDetailsCard } from '../pages/MovieDetailsPage';
 
 export const MovieDetails = () => {
+  const location = useLocation();
 
-   return (
+  return (
     <div className="movieDetails">
-      <button type="button"> Go Home</button>
-      <MovieDetailsCard/>
+      <Link to={location.state?.from ?? ('/movies' && '/')}>
+        Go Back
+      </Link>
+      <MovieDetailsCard />
       <Outlet />
     </div>
   );

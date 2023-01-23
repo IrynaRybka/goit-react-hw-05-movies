@@ -26,10 +26,10 @@ export const MovieDetailsCard = () => {
 
 const noPosterFilm = () => {
   let posterFilm = '';
-  if(movie.poster_path) {
-    posterFilm = `https://image.tmdb.org/t/p/w500${movie.poster_path}`
+  if(movie.poster_path === null) {
+    posterFilm = `${noPosterMovie}`
   } else {
-    posterFilm = noPosterMovie
+    posterFilm = `https://image.tmdb.org/t/p/w500${movie.poster_path}`
   }
   return posterFilm;
 }
