@@ -19,7 +19,7 @@ export const Cast = () => {
       }
     };
     fetchCast();
-  },[]);
+  },[movieId]);
 
   if(actors.length < 1) {
     return <p>This is cartoon. There aren`t actors.</p>
