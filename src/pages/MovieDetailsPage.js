@@ -22,7 +22,7 @@ export const MovieDetailsCard = () => {
       }
     };
     fetchDetails();
-  }, []);
+  }, [movieId]);
 
 const noPosterFilm = () => {
   let posterFilm = '';
