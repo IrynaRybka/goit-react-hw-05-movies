@@ -7,7 +7,7 @@ export const Reviews = () => {
   const { movieId } = useParams();
   const [text, setText] = useState(null);
 
-  console.log(text);
+  // console.log(text);
 
   useEffect(() => {
     const fetchReviews = async () => {
