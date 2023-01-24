@@ -19,7 +19,7 @@ export const Reviews = () => {
       }
     };
     fetchReviews();
-  }, []);
+  }, [movieId]);
 
   if (text < 1) {
     return <p>Sorry, we don't have any reviews!</p>;
