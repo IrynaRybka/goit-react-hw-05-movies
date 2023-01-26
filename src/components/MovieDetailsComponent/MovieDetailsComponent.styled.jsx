@@ -1,17 +1,19 @@
 import { NavLink } from 'react-router-dom';
 import styled from 'styled-components';
 
-export const NavItem = styled(NavLink)`
+export const NavGoBack = styled(NavLink)`
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 5px;
   padding: 15px;
-  border-radius: 4px;
+  margin-top: 30px;
+  margin-bottom: 30px;
+  margin-left: 60px;
+  border-radius: 6px;
   border: 2px orange solid;
   text-decoration: none;
-  color: white;
-  min-width: 110px;
+  color: #362115;
+  width: 110px;
 
   :not(last-child) {
     margin-right: 10px;

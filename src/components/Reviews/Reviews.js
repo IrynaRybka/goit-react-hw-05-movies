@@ -1,13 +1,12 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import { fetchMovieReviews } from '../api/fetchApi';
+import { fetchMovieReviews } from '../../api/fetchApi';
 import { toast } from 'react-toastify';
+import css from './Reviews.module.css';
 
 export const Reviews = () => {
   const { movieId } = useParams();
   const [text, setText] = useState(null);
-
-  // console.log(text);
 
   useEffect(() => {
     const fetchReviews = async () => {
@@ -29,10 +28,10 @@ export const Reviews = () => {
     text &&
     text.map(({ author, content, id, created_at }) => {
       return (
-        <div key={id}>
+        <div className={css.reviews} key={id}>
           <h3>{author}</h3>
-          <p>{content}</p>
-          <p>{created_at}</p>
+          <p className={css.reviews_content}>{content}</p>
+          <p>{new Date().toDateString(created_at)}</p>
         </div>
       );
     })

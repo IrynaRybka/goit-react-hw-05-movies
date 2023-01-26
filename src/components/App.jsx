@@ -1,10 +1,15 @@
+import { lazy } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import { HomePage } from './HomePage/HomePage';
-import { Home } from '../pages/Home';
-import { Movies } from './Movies';
-import { MovieDetails } from './MovieDetails';
-import { Cast } from './Cast';
-import { Reviews } from './Reviews';
+import { Home } from '../pages/Home/Home';
+
+const Movies = lazy(() => import('./Movies/Movies').then(module => ({...module, default: module.Movies})));
+
+const MovieDetails = lazy(() => import('./MovieDetailsComponent/MovieDetails').then(module => ({...module, default: module.MovieDetails})));
+
+const Cast = lazy(() => import('./Cast/Cast').then(module => ({...module, default: module.Cast})));
+
+const Reviews = lazy(() => import('./Reviews/Reviews').then(module => ({...module, default: module.Reviews})));
 
 export const App = () => {
   return (
@@ -17,17 +22,10 @@ export const App = () => {
             <Route path="cast" element={<Cast/>} />
             <Route path="reviews" element={<Reviews/>} />
           </Route>
-          {/* <Route path="*" element={<div>NotFound</div>} /> */}
         </Route>
       </Routes>
     </div>
   );
 };
 
-// '/' - компонент Home, домашняя страница со списком популярных кинофильмов.
-// '/movies' - компонент Movies, страница поиска фильмов по ключевому слову.
-// '/movies/:movieId' - компонент MovieDetails, страница с детальной информацией о кинофильме.
-// /movies/:movieId/cast - компонент Cast, информация о актерском составе. Рендерится на странице MovieDetails.
-// /movies/:movieId/reviews - компонент Reviews, информация об обзорах. Рендерится на странице MovieDetails.
 
-// api_key=79938206468f3281e8fe2b6c476a4d0b

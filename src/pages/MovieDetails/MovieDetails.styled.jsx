@@ -10,7 +10,7 @@ export const NavItem = styled(NavLink)`
   border-radius: 4px;
   border: 2px orange solid;
   text-decoration: none;
-  color: white;
+  color: #362115;
   min-width: 110px;
 
   :not(last-child) {

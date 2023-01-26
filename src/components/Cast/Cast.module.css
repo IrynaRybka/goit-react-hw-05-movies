@@ -1,0 +1,21 @@
+.cast {
+  padding-right: 100vw - 30px;
+  padding-left: 100vw - 30px;
+  margin: 30px 10px;
+}
+
+.cast_list {
+  list-style-type: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  padding: 0;
+  justify-content: space-between;
+}
+.cast_list_item {
+  max-width: 160px;
+}
+
+.cast_tageline {
+  text-align: center;
+}
