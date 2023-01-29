@@ -3,6 +3,7 @@ import css from './MovieDetails.module.css';
 import { NavItem } from './MovieDetails.styled';
 import { IoPersonOutline } from 'react-icons/io5';
 import { BsChatRightText } from 'react-icons/bs';
+// import { NavLink } from 'react-router-dom';
 // import {ThreeCircles } from  'react-loader-spinner'
 
 import { useEffect, useState } from 'react';
@@ -21,8 +22,9 @@ export const MovieDetailsCard = () => {
       try {
         const data = await fetchGetMovieDetails(movieId);
         setMovie(data);
-      } catch {
+      } catch (error) {
         toast.warn('Sorry, we don`t have overview yet.');
+        return error.message;
       }
     };
     fetchDetails();
@@ -37,7 +39,7 @@ export const MovieDetailsCard = () => {
     }
     return posterFilm;
   };
-  //   const { title, poster_path, tagline, vote_average, overview, genres } = movie;
+console.log(location)
   return (
     <div className={css.movieDetails}>
       {movie && (
@@ -54,13 +56,13 @@ export const MovieDetailsCard = () => {
           </div>
           <ul className={css.movieDetails_list}>
             <li className={css.movieDetails_item}>
-              <NavItem to="cast" state={{ from: location.state.from }}>
+              <NavItem to="cast" state={{ from: location.state?.from }}>
                 <IoPersonOutline size="18" />
                 Cast
               </NavItem>
             </li>
             <li>
-              <NavItem to="reviews" state={{ from: location.state.from }}>
+              <NavItem to="reviews" state={{ from: location.state?.from }}>
                 <BsChatRightText size="18" />
                 Reviews
               </NavItem>

@@ -1,9 +1,9 @@
 import { fetchTrendingToday } from '../../api/fetchApi';
 import { toast } from 'react-toastify';
 import { useState, useEffect } from 'react';
-import { useLocation } from 'react-router-dom';
+import { NavLink, useLocation } from 'react-router-dom';
 import css from './Home.module.css';
-import { MoviesItem } from 'components/Movies/Movies.styled';
+// import { MoviesItem } from 'components/Movies/Movies.styled';
 
 export const Home = () => {
   const location = useLocation();
@@ -31,7 +31,8 @@ export const Home = () => {
         <ul className={css.home_list}>
           {trendings.map(({ id, title, poster_path }) => {
             return (
-              <MoviesItem
+              <NavLink
+                style={{ maxWidth: '280px', display: 'block' }}
                 key={id}
                 to={`/movies/${id}`}
                 state={{ from: location }}
@@ -43,7 +44,7 @@ export const Home = () => {
                   alt={title}
                 />
                 <h2>{title}</h2>
-              </MoviesItem>
+              </NavLink>
             );
           })}
         </ul>

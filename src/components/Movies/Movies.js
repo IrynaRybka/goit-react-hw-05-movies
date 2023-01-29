@@ -1,5 +1,5 @@
 import { useState, useEffect, useMemo } from 'react';
-import { useLocation } from 'react-router-dom';
+import { NavLink, useLocation } from 'react-router-dom';
 import { useSearchParams } from 'react-router-dom';
 // import {ThreeCircles } from  'react-loader-spinner'
 import { fetchSearchMovie } from '../../api/fetchApi';
@@ -7,7 +7,7 @@ import { toast } from 'react-toastify';
 import { SearchBox } from '../SearchBox/SearchBox';
 import noPosterMovie from '../../noImg/noPosterFilm.jpg';
 import css from './Movies.module.css';
-import { MoviesItem } from './Movies.styled';
+
 
 export const Movies = () => {
   const location = useLocation();
@@ -53,7 +53,11 @@ export const Movies = () => {
               posterFilm = `https://image.tmdb.org/t/p/w500${movie.poster_path}`;
             }
             return (
-              <MoviesItem
+              <NavLink
+              style={{
+                maxWidth: "280px",
+                display: "block",
+              }}
                 to={`${movie.id}`}
                 key={movie.id}
                 state={{ from: location }}
@@ -65,7 +69,7 @@ export const Movies = () => {
                   alt={movie.title}
                 />
                 <h2>{movie.title}</h2>
-              </MoviesItem>
+              </NavLink>
             );
           })}
       </ul>

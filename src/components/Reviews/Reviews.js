@@ -13,15 +13,16 @@ export const Reviews = () => {
       try {
         const data = await fetchMovieReviews(movieId);
         setText(data.results);
-      } catch {
+      } catch(error) {
         toast.warn('Sorry, we don`t have any reviews yet.');
+        return error.message;
       }
     };
     fetchReviews();
   }, [movieId]);
 
   if (text < 1) {
-    return <p>Sorry, we don't have any reviews!</p>;
+    return <p className={css.no_actors}>Sorry, we don't have any reviews!</p>;
   }
 
   return (

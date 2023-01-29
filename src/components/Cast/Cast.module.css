@@ -19,3 +19,8 @@
 .cast_tageline {
   text-align: center;
 }
+.no_cast{
+  text-align: center;
+  font-size: 24px;
+  font-weight: 600;
+}

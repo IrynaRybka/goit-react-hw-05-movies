@@ -15,15 +15,17 @@ export const Cast = () => {
       try {
         const data = await fetchMovieCredits(movieId);
         setActors(data.cast);
-      } catch {
+      } catch (error) {
+        
         toast.warn('Sorry, we don`t have this list yet.');
+        return error.message;
       }
     };
     fetchCast();
   }, [movieId]);
 
   if (actors.length < 1) {
-    return <p>This is cartoon. There aren`t actors.</p>;
+    return <p className={css.no_cast}>This is cartoon. There aren`t actors.</p>;
   }
 
   return (
